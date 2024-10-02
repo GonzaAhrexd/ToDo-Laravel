@@ -10,7 +10,7 @@
 <body>
     {{-- NavBar --}}
     <nav class="bg-gray-800 p-4">
-        <a href="" class="text-white">Mis tareas</a>
+        <a href="" class="text-white">My tasks</a>
     </nav>
     @yield('content')
     
