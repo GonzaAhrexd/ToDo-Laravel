@@ -14,8 +14,6 @@ class TodosController extends Controller
     }
 
     public function destroy($id){
-           
-
         $todo = Todo::find($id);
         $todo->delete();
         return redirect()->route('todos.index')->with('success', 'Task successfully deleted');
@@ -37,5 +35,16 @@ class TodosController extends Controller
 
         // Redirigir con un mensaje de éxito
         return redirect()->route('todos.index')->with('success', 'Task successfully created');
+    }
+
+    public function edit(Request $request)
+    {
+        $todo = Todo::find($request->id);
+        $todo->title = $request->title;
+        $todo->description = $request->description;
+        $todo->save();
+
+
+        return view('todos.edit', ['todo' => $todo]);
     }
 }

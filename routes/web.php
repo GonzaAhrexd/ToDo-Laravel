@@ -21,3 +21,4 @@ Route::post('/tareas', [TodosController::class, 'store'])->name('todos.store');
 Route::get('/tareas', [TodosController::class, 'index'])->name('todos.index');
 // Eliminar una tarea
 Route::delete('/tareas/{id}', [TodosController::class, 'destroy'])->name('todos.destroy');
+Route::patch('/tareas', [TodosController::class, 'edit'])->name('todos.edit');
