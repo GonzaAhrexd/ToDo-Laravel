@@ -44,7 +44,13 @@ class TodosController extends Controller
         $todo->description = $request->description;
         $todo->save();
 
+        $todos = Todo::all();
 
-        return view('todos.edit', ['todo' => $todo]);
+        return view('todos.index', ['todos' => $todos]);
+    }
+
+    public function show($id){
+        $todo = Todo::find($id);
+        return view('todos.TodoEdit', ['todo' => $todo]);
     }
 }

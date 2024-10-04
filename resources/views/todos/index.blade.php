@@ -1,5 +1,4 @@
 @extends('app')
-
 @section('content')
         {{-- Hazme un buen formulario usando tailwind --}}
     <main class="p-4">
@@ -7,6 +6,7 @@
     <div class="flex flex-col items-center justify-center">
         <div class="bg-gray-300 w-1/3 rounded-lg p-4">
             <form action="{{route('todos.store')}}" method="POST">
+                @method('POST')
             @csrf
 
             @if (session('success'))
@@ -44,10 +44,18 @@
                 <form action="{{route('todos.destroy', [$todo->id])}}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button class="bg-red-500 rounded-lg text-white font-bold h-10 w-60 hover:bg-red-700">Delete</button>
+                    <button class="bg-red-500 rounded-lg text-white font-bold h-10 w-60 hover:bg-red-700 my-2">Delete</button>
                 </form>
+                
+                <form action="{{route('todos.show', ['id' => $todo -> id])}}" method="POST">
+                    @csrf
+                    @method('GET')
+                <button class="bg-orange-500 rounded-lg text-white font-bold h-10 w-60 hover:bg-orange-700">Edit</button>
+            </form>
             </div>
         @endforeach
+
     </div>
-        </main>
+
+</main>
             @endsection
